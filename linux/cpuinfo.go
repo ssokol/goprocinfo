@@ -9,6 +9,9 @@ import (
 
 type CPUInfo struct {
 	Processors []Processor `json:"processors"`
+	Hardware string `json:hardware`
+	Revision string `json:revision`
+	Serial string   `json:serial`
 }
 
 func (self *CPUInfo) NumCPU() int {
@@ -97,6 +100,12 @@ func ReadCPUInfo(path string) (*CPUInfo, error) {
 		value = submatches[2]
 
 		switch key {
+		case "Serial":
+		  cpuinfo.Serial = value
+		case "Revision":
+		  cpuinfo.Revision = value
+		case "Hardware":
+		  cpuinfo.Hardware = value
 		case "processor":
 			processor.Id, _ = strconv.ParseInt(value, 10, 64)
 		case "vendor_id":
