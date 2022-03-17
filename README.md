@@ -1,6 +1,6 @@
 goprocinfo
 ===================
-
+.
 /proc information parser for Go.
 
 Usage
